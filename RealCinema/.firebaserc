@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "realcinema-2137": {
+      "hosting": {
+        "RealCinema": [
+          "realcinema-2137"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "realcinema-2137"
+  }
+}
