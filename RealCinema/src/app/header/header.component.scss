@@ -1,4 +1,28 @@
 section {
-    margin: 1rem;
+    background-image: linear-gradient(black, rgb(39, 39, 39));
+    color: white;
+    padding: 2rem;
     justify-content: space-between
+}
+.header-container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.log-option {
+    margin-right: 2rem;
+}
+.logo-design {
+    font-size: 30px;
+    color: #FFFFFF;
+text-shadow: #FFF 0px 0px 5px,
+ #FFF 0px 0px 10px, 
+ #FFF 0px 0px 15px,
+  #FF2D95 0px 0px 20px,
+   #FF2D95 0px 0px 30px,
+    #FF2D95 0px 0px 40px,
+     #FF2D95 0px 0px 50px,
+      #FF2D95 0px 0px 75px;
 }

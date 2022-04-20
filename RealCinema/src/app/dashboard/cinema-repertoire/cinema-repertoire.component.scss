@@ -1,0 +1,31 @@
+div {
+    color: white;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0.15rem;
+    .col {
+        display: flex;
+        justify-content: space-between
+    }
+}
+
+.label {
+    font-size: x-large;
+    text-shadow: #FFF 0px 0px 5px;
+    padding-right: 1rem;
+}
+app-cinema-repertoire-card {
+    margin: 0.5rem;
+    margin-top: 2rem;
+}
+
+button {
+    float:inline-end;
+    margin-right: 1rem;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
