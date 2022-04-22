@@ -1,21 +1,52 @@
-section {
-    background-image: linear-gradient(black, rgb(39, 39, 39));
-    color: white;
-    padding: 2rem;
-    justify-content: space-between
+@media only screen and (max-width: 500px) {
+    section {
+        background-image: linear-gradient(black, rgb(39, 39, 39));
+        color: white;
+        padding: 2rem;
+    }
+    .header-container {
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        justify-content: center;
+    }
+    .buttons{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+    }
+    .logo-design{
+        font-size: 40px;
+        display: block;
+        margin: auto;
+        width: fit-content;
+    }
 }
-.header-container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-between;
+@media only screen and (min-width: 500px) {
+    section {
+        background-image: linear-gradient(black, rgb(39, 39, 39));
+        color: white;
+        padding: 2rem;
+        justify-content: space-between
+    }
+    .header-container {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .log-option {
+        margin-right: 2rem;
+    }
+    .logo-design {
+        font-size: 30px;
+    }
 }
-.log-option {
-    margin-right: 2rem;
-}
+
+
 .logo-design {
-    font-size: 30px;
     color: #FFFFFF;
 text-shadow: #FFF 0px 0px 5px,
  #FFF 0px 0px 10px, 

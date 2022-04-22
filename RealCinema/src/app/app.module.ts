@@ -12,6 +12,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { CinemaSelectorComponent } from './dashboard/cinema-selector/cinema-selector.component';
 import { CinemaRepertoireComponent } from './dashboard/cinema-repertoire/cinema-repertoire.component';
 import { CinemaRepertoireCardComponent } from './dashboard/cinema-repertoire/cinema-repertoire-card/cinema-repertoire-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CinemaRepertoireCardComponent } from './dashboard/cinema-repertoire/cin
     CarouselComponent,
     CinemaSelectorComponent,
     CinemaRepertoireComponent,
-    CinemaRepertoireCardComponent
+    CinemaRepertoireCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

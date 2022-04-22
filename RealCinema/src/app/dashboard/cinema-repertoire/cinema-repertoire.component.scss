@@ -3,10 +3,6 @@ div {
     padding-top: 1rem;
     margin-bottom: 1rem;
     margin-left: 0.15rem;
-    .col {
-        display: flex;
-        justify-content: space-between
-    }
 }
 
 .label {
@@ -27,5 +23,24 @@ button {
 .flex {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+@media only screen and (min-width: 451px) { 
+    .button {
+        display: inline-block;
+    }
+    .col {
+        display: flex;
+        justify-content: space-between
+    }
+}
+@media only screen and (max-width: 450px) { 
+    .row {
+        margin-bottom: 0px;
+    }
+    .button {
+        display: flex;
+        justify-content: center;
+    }
 }

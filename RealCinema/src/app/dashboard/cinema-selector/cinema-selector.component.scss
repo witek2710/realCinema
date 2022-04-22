@@ -18,3 +18,14 @@ div {
 button {
     margin-right: 1rem;
 }
+@media only screen and (min-width: 451px) { 
+    .selectors {
+        display: inline-block;
+    }
+}
+@media only screen and (max-width: 450px) { 
+    .selectors {
+        display: flex;
+        justify-content: center;
+    }
+}
