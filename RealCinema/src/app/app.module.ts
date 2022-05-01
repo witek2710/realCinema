@@ -13,6 +13,18 @@ import { CinemaSelectorComponent } from './dashboard/cinema-selector/cinema-sele
 import { CinemaRepertoireComponent } from './dashboard/cinema-repertoire/cinema-repertoire.component';
 import { CinemaRepertoireCardComponent } from './dashboard/cinema-repertoire/cinema-repertoire-card/cinema-repertoire-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
+import { IPerformanceClient } from '@azure/msal-common';
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { LoginOverviewComponent } from './authentication/login/login-overview/login-overview.component';
+export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication ({
+    auth: {
+      clientId: '5a8355ce-3706-4c67-9fa0-b3082c9f4f94',
+      redirectUri: 'http://localhost:4200'
+    }
+  })
+}
 
 @NgModule({
   declarations: [
@@ -31,8 +43,15 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     NgbModule,
     NgImageSliderModule,
+    MsalModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    },
+    MsalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
