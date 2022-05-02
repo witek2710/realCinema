@@ -20,8 +20,8 @@ import { LoginOverviewComponent } from './authentication/login/login-overview/lo
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication ({
     auth: {
-      clientId: '5a8355ce-3706-4c67-9fa0-b3082c9f4f94',
-      redirectUri: 'http://localhost:4200'
+      clientId: '35bb73dc-110b-4ddc-84dd-86b3ce673090',
+      redirectUri: 'https://realcinema-2137.web.app'
     }
   })
 }
