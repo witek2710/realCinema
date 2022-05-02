@@ -18,12 +18,22 @@ import { IPerformanceClient } from '@azure/msal-common';
 import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { LoginOverviewComponent } from './authentication/login/login-overview/login-overview.component';
 export function MSALInstanceFactory(): IPublicClientApplication {
-  return new PublicClientApplication ({
-    auth: {
-      clientId: '35bb73dc-110b-4ddc-84dd-86b3ce673090',
-      redirectUri: 'https://realcinema-2137.web.app'
-    }
-  })
+  const isLocal = false;
+  if (isLocal) {
+    return new PublicClientApplication ({
+      auth: {
+        clientId: '5a8355ce-3706-4c67-9fa0-b3082c9f4f94',
+        redirectUri: 'http://localhost:4200'
+      }
+    })
+  }else {
+    return new PublicClientApplication ({
+      auth: {
+        clientId: '35bb73dc-110b-4ddc-84dd-86b3ce673090',
+        redirectUri: 'https://realcinema-2137.web.app'
+      }
+    })
+  }
 }
 
 @NgModule({

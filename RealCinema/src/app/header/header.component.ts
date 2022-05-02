@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountInfo } from '@azure/msal-browser';
 import { SsoDataService } from '../authentication/sso-data.service';
@@ -23,7 +23,16 @@ export class HeaderComponent implements OnInit {
       if(!!accountInfo) {
         this.loggedIn = true;
         this.activeAcc = accountInfo;
-        
+        let account = {
+          homeAccountId: accountInfo.homeAccountId,
+          environment: accountInfo.environment,
+          tenantId: accountInfo.tenantId,
+          username: accountInfo.username,
+          localAccountId: accountInfo.localAccountId,
+          name: accountInfo.name,
+          idTokenClaims: accountInfo.idTokenClaims,
+        }
+        localStorage.setItem('activeAcc', JSON.stringify(account));
       }
     });
   }
@@ -38,7 +47,9 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername(): string {
-    return  this.activeAcc?.name ?? this.activeAcc?.username ?? 'User';
+    let JSONAccount = localStorage.getItem('activeAcc');
+    let account = JSONAccount ? JSON.parse(JSONAccount) : undefined;
+    return  account.name ?? account.username ?? 'User';
   }
 
   logOut(): void {
