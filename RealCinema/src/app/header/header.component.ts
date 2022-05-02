@@ -23,8 +23,6 @@ export class HeaderComponent implements OnInit {
       if(!!accountInfo) {
         this.loggedIn = true;
         this.activeAcc = accountInfo;
-        this.username = accountInfo.name ?? accountInfo.username; 
-        console.log("tyresvseevvev");
         
       }
     });
@@ -40,10 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername(): string {
-    console.log("refreshed username");
-    
-    return this.username;
-
+    return  this.activeAcc?.name ?? this.activeAcc?.username ?? 'User';
   }
 
   logOut(): void {
