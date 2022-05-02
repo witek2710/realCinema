@@ -16,11 +16,14 @@
         justify-content: space-around;
         margin-top: 1rem;
     }
-    .logo-design{
-        font-size: 40px;
-        display: block;
-        margin: auto;
-        width: fit-content;
+    span:hover {
+        cursor: none;
+        .logo-design{
+            font-size: 40px;
+            display: block;
+            margin: auto;
+            width: fit-content;
+        }
     }
 }
 @media only screen and (min-width: 500px) {
@@ -40,9 +43,13 @@
     .log-option {
         margin-right: 2rem;
     }
-    .logo-design {
+    
+    
+    .logo-design{
         font-size: 30px;
+        cursor: pointer;
     }
+    
 }
 
 .welcome-sign {

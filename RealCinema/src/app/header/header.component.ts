@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountInfo } from '@azure/msal-browser';
 import { SsoDataService } from '../authentication/sso-data.service';
@@ -14,15 +14,17 @@ export class HeaderComponent implements OnInit {
     protected readonly router: Router) {
     
   }
+
   public loggedIn = false;
-  public activeAcc: AccountInfo | undefined;
   public username: string = 'User';
+
+  @Input()
+  displayButtons = true;
 
   keepLoggedInStatusUpdated(): void {
     this.ssoDataService.getAccountInfo().subscribe(accountInfo =>{
       if(!!accountInfo) {
         this.loggedIn = true;
-        this.activeAcc = accountInfo;
         let account = {
           homeAccountId: accountInfo.homeAccountId,
           environment: accountInfo.environment,
@@ -33,6 +35,9 @@ export class HeaderComponent implements OnInit {
           idTokenClaims: accountInfo.idTokenClaims,
         }
         localStorage.setItem('activeAcc', JSON.stringify(account));
+      }else {
+        this.loggedIn = false;
+        localStorage.removeItem('activeAcc');
       }
     });
   }
@@ -46,10 +51,17 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([`../login`]);
   }
 
+  goToDashboard(): void {
+    this.router.navigate([``]);
+  }
+
   getUsername(): string {
-    let JSONAccount = localStorage.getItem('activeAcc');
-    let account = JSONAccount ? JSON.parse(JSONAccount) : undefined;
-    return  account.name ?? account.username ?? 'User';
+    if(this.loggedIn) {
+      let JSONAccount = localStorage.getItem('activeAcc');
+      let account = JSONAccount ? JSON.parse(JSONAccount) : undefined;
+      return  account.name ?? account.username;
+    }
+    return 'User';
   }
 
   logOut(): void {

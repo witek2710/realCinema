@@ -13,12 +13,13 @@ import { CinemaSelectorComponent } from './dashboard/cinema-selector/cinema-sele
 import { CinemaRepertoireComponent } from './dashboard/cinema-repertoire/cinema-repertoire.component';
 import { CinemaRepertoireCardComponent } from './dashboard/cinema-repertoire/cinema-repertoire-card/cinema-repertoire-card.component';
 import { FooterComponent } from './footer/footer.component';
-import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
-import { IPerformanceClient } from '@azure/msal-common';
-import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { LoginOverviewComponent } from './authentication/login/login-overview/login-overview.component';
+import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 export function MSALInstanceFactory(): IPublicClientApplication {
-  const isLocal = false;
+  const isLocal = true;
   if (isLocal) {
     return new PublicClientApplication ({
       auth: {
@@ -46,14 +47,17 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     CinemaSelectorComponent,
     CinemaRepertoireComponent,
     CinemaRepertoireCardComponent,
-    FooterComponent
+    FooterComponent,
+    LoginOverviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     NgImageSliderModule,
-    MsalModule
+    MsalModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {

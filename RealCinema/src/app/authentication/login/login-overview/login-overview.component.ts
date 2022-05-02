@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from 'src/app/shared/Navigation/navigation.service';
 import { SsoDataService } from '../../sso-data.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-overview',
@@ -8,9 +9,12 @@ import { SsoDataService } from '../../sso-data.service';
   styleUrls: ['./login-overview.component.scss']
 })
 export class LoginOverviewComponent implements OnInit {
-
+  name = new FormControl('');
+  password = new FormControl('');
+  public displayButtons = false;
   constructor(private ssoDataService: SsoDataService,private navigation: NavigationService) { }
 
+  
   ngOnInit(): void {
     this.redirectIfLogged();
     this.ssoDataService.setActiveAccountAfterRedirect();
@@ -24,5 +28,8 @@ export class LoginOverviewComponent implements OnInit {
       if(!!sta)
         this.navigation.back();
     });
+  }
+  tryLogin() {
+    console.log("LOGIN PRESSED");
   }
 }
