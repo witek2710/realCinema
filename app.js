@@ -179,6 +179,127 @@ app.post("/login", function(req, res){
 });
 
 
+
+// seats 
+
+const SeatSchema = new mongoose.Schema({
+    row: {
+        type: String,
+        required: true
+    },
+    column: {
+        type: String,
+        required: true
+    },
+    isReserved: {
+        type: Boolean,
+        default: false
+    },
+});
+
+const Seat = new mongoose.model("Seat", SeatSchema);
+
+
+// reservation
+
+const ReservationSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    seats: [{
+        type: mongoose.Schema.Types.Mixed, ref: 'Seat',
+        required: true
+    }],
+    movie: {
+        type: mongoose.Schema.Types.Mixed, ref: 'Movie',
+        required: true
+    },
+
+    hall: {
+        type: mongoose.Schema.Types.Mixed, ref: 'Hall',
+        required: true
+    },
+
+    date: {
+        type: Date,
+        required: true
+    },
+
+});
+
+const Reservation = new mongoose.model("Reservation", ReservationSchema);
+
+
+// movies
+
+const MovieSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    year: {
+        type: Date,
+    },
+    author: {
+        type: String,
+        required: true
+    },
+});
+
+const Movie = new mongoose.model("Movie", MovieSchema);
+
+
+
+
+// hall
+
+const HallSchema = new mongoose.Schema({
+    NumberOfHall: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    NumberOfColumns: {
+        type: Number,
+        required: true
+    },
+    NmberOfRows: {
+        type: Number,
+        required: true
+    },
+});
+
+const Hall = new mongoose.model("Hall", HallSchema);
+
+
+
+// ticket
+
+const TicketSchema = new mongoose.Schema({
+    datesOfFilm: {
+        type: [Date],
+        required: true
+    },
+    movie: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Movie',
+        required: true
+    },
+    seats: [
+        {
+            type: mongoose.Schema.Types.Mixed, ref: 'Seat',
+            required: true
+        }
+    ],
+    hall: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Room',
+        required:  true
+    },
+});
+
+
+const Ticket = new mongoose.model('Ticket', TicketSchema);
+
 // app listen
 app.listen(3000, () => {
     console.log("Server started on port 3000.");
